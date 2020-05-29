@@ -159,4 +159,15 @@ genres = Hash[[
   "Synthpop"
 ].map { |genre| [genre, Genre.find_or_create_by(name: genre)] }]
 
+nin = Artist.create!(name: "Nine Inch Nails")
+industrial = Genre.find_or_create_by(name: "Industrial")
+void = nin.songs.create!(title: "Into the Void", genre: industrial)
+void.notes.create!(content: "This may have been the first NIN song I ever heard.")
 
+patsy_cline = Artist.create!(name: "Patsy Cline")
+moon = patsy_cline.songs.create!(title: "Blue Moon of Kentucky", genre: Genre.find_or_create_by(name: "Country"))
+moon.notes.create!(content: "Overheard @ Township")
+
+xcx = Artist.create(name: "Charli XCX")
+boys = xcx.songs.create!(title: "Boys", genre: Genre.find_or_create_by(name: "Pop"))
+boys.notes.create!(content: "Sounds like the CVS self checkout machine!")
