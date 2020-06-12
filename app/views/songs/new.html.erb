@@ -1,24 +1,39 @@
+
 <h1>Create a Song</h1>
 
 <%= form_for @song  do |f| %>
 
   <div>
-  <%= f.label :title %>
+  <%= f.label :title, "Song Title"%>
   <%= f.text_field :title %>
   <br />
   </div>
 
   <div>
-  <%= f.label :artist_name %>
+  <%= f.label :artist_name, "Artist's Name" %>
   <%= f.text_field :artist_name %>
   <br />
   </div>
 
   <div>
-  <%= f.collection_select(:genre_id, Genre.all, :name, :name) %>
-  <%= f.collection_select :name %>
+  <%= f.label "Select Genre"%>
+  <%= f.collection_select :genre_id, Genre.all, :id, :name %>
+  <%# above is code for associations in forms %>
+
   <br />
   </div>
+
+  <br/>
+
+<h2>Notes</h2>
+
+  <%= f.fields_for :notes do |note_form| %>
+    <%= note_form.label :note %>
+    <%= note_form.text_area :content %>
+  <br/>
+  <% end %>
+
+  <br/>
 
   <%= f.submit %>
 <% end %>
